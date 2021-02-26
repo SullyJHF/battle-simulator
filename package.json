@@ -1,0 +1,43 @@
+{
+  "name": "byhiras-battle-simulator",
+  "version": "1.0.0",
+  "description": "Battle simulator for an RPG. Part of the interview process for Byhiras.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "rimraf dist && webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sullivan Ford",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
+    "html-loader": "^2.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.2.2",
+    "webpack": "^5.24.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.7",
+    "@babel/node": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.13.7",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.18.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.2.0",
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "webpack-cli": "^4.5.0"
+  }
+}
