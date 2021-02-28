@@ -5,10 +5,10 @@ import { useRollPlayerDice } from './Player/playerSlice';
 
 const NAME = 'game';
 const IDLE = 'idle';
-const ATTACKING = 'attacking';
-export const GAME_STATUS = { IDLE, ATTACKING };
+const ROLLING = 'rolling';
 const initialState = {
-  phase: GAME_STATUS.IDLE,
+  phase: IDLE,
+  rollTime: 3000,
 };
 
 const gameSlice = createSlice({
@@ -22,21 +22,18 @@ const gameSlice = createSlice({
 });
 
 const { setPhase } = gameSlice.actions;
-
-export const useGame = () => {
+export const useGame = () => useSelector((state) => state[NAME]);
+export const useAttack = () => {
   const dispatch = useDispatch();
-  const s = useSelector((state) => state[NAME]);
-  const rollPlayerDice = useRollPlayerDice();
+  const { rollTime } = useGame();
   const rollMonsterDice = useRollMonsterDice();
-
-  return {
-    ...s,
-    changePhase: (phase) => dispatch(setPhase(phase)),
-    attack: () => {
-      rollPlayerDice();
-      rollMonsterDice();
-      dispatch(setPhase(GAME_STATUS.ATTACKING));
-    },
+  const rollPlayerDice = useRollPlayerDice();
+  return async () => {
+    dispatch(setPhase(ROLLING));
+    await new Promise((resolve) => setTimeout(resolve, rollTime));
+    rollMonsterDice();
+    rollPlayerDice();
+    dispatch(setPhase(IDLE));
   };
 };
 

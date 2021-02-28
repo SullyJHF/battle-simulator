@@ -9,7 +9,7 @@ export const Monster = () => {
       <div id="dice-a">{diceA}</div>
       <div id="dice-b">{diceB}</div>
       <div id="name">
-        Strong Boi
+        Evil Boi
       </div>
     </div>
   );
