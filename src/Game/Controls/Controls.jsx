@@ -2,10 +2,10 @@ import React from 'react';
 import { usePlayer } from '../Player/playerSlice';
 
 export const Controls = () => {
-  const { damagePlayer } = usePlayer();
+  const { rollDice } = usePlayer();
   return (
     <div id="controls">
-      <button type="button" onClick={() => damagePlayer(5)}>Attack!</button>
+      <button type="button" onClick={() => rollDice()}>Attack!</button>
     </div>
   );
 };

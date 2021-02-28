@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const NAME = 'player';
 const initialState = {
   playerHealth: 100,
+  diceA: null,
+  diceB: null,
 };
 
 const playerSlice = createSlice({
@@ -13,10 +15,17 @@ const playerSlice = createSlice({
     damagePlayer: (state, action) => {
       state.playerHealth -= action.payload;
     },
+    setDiceRoll: {
+      reducer: (state, action) => {
+        state.diceA = action.payload.aResult;
+        state.diceB = action.payload.bResult;
+      },
+      prepare: (aResult, bResult) => ({ payload: { aResult, bResult } }),
+    },
   },
 });
 
-const { damagePlayer } = playerSlice.actions;
+const { damagePlayer, setDiceRoll } = playerSlice.actions;
 
 export const usePlayer = () => {
   const dispatch = useDispatch();
@@ -25,6 +34,11 @@ export const usePlayer = () => {
   return {
     ...s,
     damagePlayer: (phase) => dispatch(damagePlayer(phase)),
+    rollDice: () => {
+      const a = Math.floor((Math.random() * 6) + 1);
+      const b = Math.floor((Math.random() * 6) + 1);
+      dispatch(setDiceRoll(a, b));
+    },
   };
 };
 
