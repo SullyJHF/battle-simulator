@@ -1,11 +1,11 @@
 import React from 'react';
-import { usePlayer } from '../Player/playerSlice';
+import { useGame } from '../gameSlice';
 
 export const Controls = () => {
-  const { rollDice } = usePlayer();
+  const { attack } = useGame();
   return (
     <div id="controls">
-      <button type="button" onClick={() => rollDice()}>Attack!</button>
+      <button type="button" onClick={() => attack()}>Attack!</button>
     </div>
   );
 };

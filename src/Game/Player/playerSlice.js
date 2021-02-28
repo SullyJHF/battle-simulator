@@ -2,18 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 const NAME = 'player';
-const initialState = {
-  playerHealth: 100,
+const initialActorState = {
+  health: 100,
   diceA: null,
   diceB: null,
 };
 
-const playerSlice = createSlice({
-  name: NAME,
-  initialState,
+export const actorSliceOptions = {
+  initialState: initialActorState,
   reducers: {
-    damagePlayer: (state, action) => {
-      state.playerHealth -= action.payload;
+    damage: (state, action) => {
+      state.health -= action.payload;
     },
     setDiceRoll: {
       reducer: (state, action) => {
@@ -23,22 +22,27 @@ const playerSlice = createSlice({
       prepare: (aResult, bResult) => ({ payload: { aResult, bResult } }),
     },
   },
+};
+
+const playerSlice = createSlice({
+  name: NAME,
+  ...actorSliceOptions,
 });
 
-const { damagePlayer, setDiceRoll } = playerSlice.actions;
+const { damage, setDiceRoll } = playerSlice.actions;
 
-export const usePlayer = () => {
+export const usePlayer = () => useSelector((state) => state[NAME]);
+
+export const useDamagePlayer = () => {
   const dispatch = useDispatch();
-  const s = useSelector((state) => state[NAME]);
-
-  return {
-    ...s,
-    damagePlayer: (phase) => dispatch(damagePlayer(phase)),
-    rollDice: () => {
-      const a = Math.floor((Math.random() * 6) + 1);
-      const b = Math.floor((Math.random() * 6) + 1);
-      dispatch(setDiceRoll(a, b));
-    },
+  return (hp) => dispatch(damage(hp));
+};
+export const useRollPlayerDice = () => {
+  const dispatch = useDispatch();
+  return () => {
+    const a = Math.floor((Math.random() * 6) + 1);
+    const b = Math.floor((Math.random() * 6) + 1);
+    dispatch(setDiceRoll(a, b));
   };
 };
 
