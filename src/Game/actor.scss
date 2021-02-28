@@ -1,0 +1,8 @@
+@import "../mixins";
+
+.actor-wrapper {
+  @include flex($dir: column);
+  height: 100%;
+  flex: 3;
+  padding: 2vh;
+}

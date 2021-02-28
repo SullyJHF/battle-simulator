@@ -1,0 +1,10 @@
+.health-wrapper {
+  width: 100%;
+  height: 2vh;
+  background-color: rgb(204, 63, 63);
+  border: 2px solid black;
+  .remaining {
+    background-color: rgb(101, 209, 101);
+    height: 100%;
+  }
+}

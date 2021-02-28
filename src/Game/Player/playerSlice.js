@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 const NAME = 'player';
+export const MAX_HEALTH = 100;
 const initialActorState = {
-  health: 100,
+  health: MAX_HEALTH,
   diceA: null,
   diceB: null,
 };

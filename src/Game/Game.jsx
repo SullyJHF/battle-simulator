@@ -1,4 +1,5 @@
 import React from 'react';
+import './actor.scss';
 import { Controls } from './Controls/Controls';
 import './game.scss';
 import { useGame } from './gameSlice';
