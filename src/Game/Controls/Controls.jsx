@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAttack, useGame } from '../gameSlice';
+import './controls.scss';
 
 export const Controls = () => {
   const attack = useAttack();
