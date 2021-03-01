@@ -8,5 +8,11 @@
   .info {
     @include flex($justify: space-between, $align: center);
     width: 100%;
+    padding: 2vh;
+    .dice-wrapper {
+      :first-child {
+        margin-bottom: 1vh;
+      }
+    }
   }
 }

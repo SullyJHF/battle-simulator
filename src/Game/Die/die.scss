@@ -1,0 +1,38 @@
+$die-size: 8vh;
+$dot-size: 1.5vh;
+$dot-padding: 25%;
+$dot-reverse-padding: 100% - $dot-padding;
+
+.die {
+  width: $die-size;
+  height: $die-size;
+  background-color: black;
+  position: relative;
+  border-radius: $dot-size;
+  .dot {
+    width: $dot-size;
+    height: $dot-size;
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    &.center {
+      left: 50%;
+      top: 50%;
+    }
+    &.top {
+      top: $dot-padding;
+    }
+    &.right {
+      left: $dot-reverse-padding;
+    }
+    &.bottom {
+      top: $dot-reverse-padding;
+    }
+    &.left {
+      left: $dot-padding;
+    }
+  }
+}

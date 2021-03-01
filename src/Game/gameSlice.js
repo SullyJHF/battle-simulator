@@ -5,7 +5,7 @@ import { useRollPlayerDice } from './Player/playerSlice';
 
 const NAME = 'game';
 const IDLE = 'idle';
-const ROLLING = 'rolling';
+export const ROLLING = 'rolling';
 const initialState = {
   phase: IDLE,
   rollTime: 3000,
