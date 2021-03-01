@@ -8,9 +8,19 @@ export const Monster = () => {
   return (
     <div className="actor-wrapper" id="monster">
       <HealthBar health={health} maxHealth={MAX_HEALTH} />
-      <div id="dice-a">{diceA}</div>
-      <div id="dice-b">{diceB}</div>
-      <img src="images/monster.png" alt="Big scary monster" />
+      <div className="info">
+        <div className="dice-wrapper">
+          <div id="dice-a">
+            dice
+            {diceA}
+          </div>
+          <div id="dice-b">
+            dice
+            {diceB}
+          </div>
+        </div>
+        <img src="images/monster.png" alt="Big scary monster" />
+      </div>
     </div>
   );
 };

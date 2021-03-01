@@ -5,4 +5,8 @@
   height: 100%;
   flex: 3;
   padding: 2vh;
+  .info {
+    @include flex($justify: space-between, $align: center);
+    width: 100%;
+  }
 }

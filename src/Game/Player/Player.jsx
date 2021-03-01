@@ -7,9 +7,19 @@ export const Player = () => {
   return (
     <div id="player" className="actor-wrapper">
       <HealthBar health={health} maxHealth={MAX_HEALTH} />
-      <div id="dice-a">{diceA}</div>
-      <div id="dice-b">{diceB}</div>
-      <img src="images/player.png" alt="Very strong boy" />
+      <div className="info">
+        <img className="image" src="images/player.png" alt="Very strong boy" />
+        <div className="dice-wrapper">
+          <div id="dice-a">
+            dice
+            {diceA}
+          </div>
+          <div id="dice-b">
+            dice
+            {diceB}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
