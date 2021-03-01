@@ -9,9 +9,7 @@ export const Player = () => {
       <HealthBar health={health} maxHealth={MAX_HEALTH} />
       <div id="dice-a">{diceA}</div>
       <div id="dice-b">{diceB}</div>
-      <div id="name">
-        Strong Boi
-      </div>
+      <img src="images/player.png" alt="Very strong boy" />
     </div>
   );
 };

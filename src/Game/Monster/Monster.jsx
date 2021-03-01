@@ -10,9 +10,7 @@ export const Monster = () => {
       <HealthBar health={health} maxHealth={MAX_HEALTH} />
       <div id="dice-a">{diceA}</div>
       <div id="dice-b">{diceB}</div>
-      <div id="name">
-        Evil Boi
-      </div>
+      <img src="images/monster.png" alt="Big scary monster" />
     </div>
   );
 };

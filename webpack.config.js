@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const sass = require('sass');
 
@@ -44,6 +45,9 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebPackPlugin({ template: 'src/index.html' })],
+  plugins: [
+    new HtmlWebPackPlugin({ template: 'src/index.html' }),
+    new CopyWebpackPlugin({ patterns: [{ from: 'src/images', to: 'images' }] }),
+  ],
   mode: devMode ? 'development' : 'production',
 };
