@@ -10,7 +10,7 @@ export const Monster = () => {
   const { phase } = useGame();
   return (
     <div className="actor-wrapper" id="monster">
-      <HealthBar health={health} maxHealth={MAX_HEALTH} />
+      <HealthBar health={health} maxHealth={MAX_HEALTH} reverse />
       <div className="info">
         <div className="dice-wrapper">
           <Die value={diceA} rolling={phase === ROLLING} />
