@@ -1,6 +1,6 @@
-@mixin flex($dir: row, $align: flex-start, $justify: flex-start) {
+@mixin flex($dir: row, $align: flex-start, $justify: flex-start, $flex: 0 1) {
   display: flex;
-  flex: 1;
+  flex: $flex;
   flex-direction: $dir;
   align-items: $align;
   justify-content: $justify;

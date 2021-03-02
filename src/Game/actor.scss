@@ -1,12 +1,11 @@
 @import "../mixins";
 
 .actor-wrapper {
-  @include flex($dir: column);
+  @include flex($dir: column, $flex: 3);
   height: 100%;
-  flex: 3;
   padding: 2vh;
   .info {
-    @include flex($justify: space-between, $align: center);
+    @include flex($justify: space-between, $align: center, $flex: 1);
     width: 100%;
     padding: 2vh;
     .dice-wrapper {
