@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRollMonsterDice } from './Monster/monsterSlice';
-import { useRollPlayerDice } from './Player/playerSlice';
+import { useDamageMonster, useMonsterDiceTotal, useRollMonsterDice } from './Monster/monsterSlice';
+import { useDamagePlayer, usePlayerDiceTotal, useRollPlayerDice } from './Player/playerSlice';
 
 const NAME = 'game';
-const IDLE = 'idle';
+export const IDLE = 'idle';
 export const ROLLING = 'rolling';
+export const DAMAGING = 'damaging';
 const initialState = {
   phase: IDLE,
   rollTime: 3000,
@@ -33,6 +34,23 @@ export const useAttack = () => {
     await new Promise((resolve) => setTimeout(resolve, rollTime));
     rollMonsterDice();
     rollPlayerDice();
+    dispatch(setPhase(DAMAGING));
+  };
+};
+export const useDamage = () => {
+  const dispatch = useDispatch();
+  const { rollTime } = useGame();
+  const monsterDiceTotal = useMonsterDiceTotal();
+  const playerDiceTotal = usePlayerDiceTotal();
+  const damageMonster = useDamageMonster();
+  const damagePlayer = useDamagePlayer();
+  return async () => {
+    if (monsterDiceTotal > playerDiceTotal) {
+      damagePlayer(monsterDiceTotal - playerDiceTotal);
+    } else if (playerDiceTotal > monsterDiceTotal) {
+      damageMonster(playerDiceTotal - monsterDiceTotal);
+    }
+    await new Promise((resolve) => setTimeout(resolve, rollTime));
     dispatch(setPhase(IDLE));
   };
 };

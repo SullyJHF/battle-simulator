@@ -33,6 +33,7 @@ const playerSlice = createSlice({
 const { damage, setDiceRoll } = playerSlice.actions;
 
 export const usePlayer = () => useSelector((state) => state[NAME]);
+export const usePlayerDiceTotal = () => useSelector((state) => state[NAME].diceA + state[NAME].diceB);
 
 export const useDamagePlayer = () => {
   const dispatch = useDispatch();
