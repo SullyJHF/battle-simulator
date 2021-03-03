@@ -11,7 +11,8 @@ export const WIN = 'win';
 export const LOSE = 'lose';
 const initialState = {
   phase: IDLE,
-  rollTime: 3000,
+  rollTime: 2222,
+  damageTime: 999,
 };
 
 const gameSlice = createSlice({
@@ -41,7 +42,7 @@ export const useAttack = () => {
 };
 export const useDamage = () => {
   const dispatch = useDispatch();
-  const { rollTime } = useGame();
+  const { damageTime } = useGame();
   const monsterDiceTotal = useMonsterDiceTotal();
   const playerDiceTotal = usePlayerDiceTotal();
   const damageMonster = useDamageMonster();
@@ -52,7 +53,7 @@ export const useDamage = () => {
     } else if (playerDiceTotal > monsterDiceTotal) {
       damageMonster(playerDiceTotal - monsterDiceTotal);
     }
-    await new Promise((resolve) => setTimeout(resolve, rollTime));
+    await new Promise((resolve) => setTimeout(resolve, damageTime));
     dispatch(setPhase(IDLE));
   };
 };
