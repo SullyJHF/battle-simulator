@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import { useDamageMonster, useMonsterDiceTotal, useRollMonsterDice } from './Monster/monsterSlice';
-import { useDamagePlayer, usePlayerDiceTotal, useRollPlayerDice } from './Player/playerSlice';
+import { useDamageMonster, useMonster, useMonsterDiceTotal, useRollMonsterDice } from './Monster/monsterSlice';
+import { useDamagePlayer, usePlayer, usePlayerDiceTotal, useRollPlayerDice } from './Player/playerSlice';
 
 const NAME = 'game';
 export const IDLE = 'idle';
 export const ROLLING = 'rolling';
 export const DAMAGING = 'damaging';
+export const WIN = 'win';
+export const LOSE = 'lose';
 const initialState = {
   phase: IDLE,
   rollTime: 3000,
@@ -52,6 +54,18 @@ export const useDamage = () => {
     }
     await new Promise((resolve) => setTimeout(resolve, rollTime));
     dispatch(setPhase(IDLE));
+  };
+};
+export const useCheckWin = () => {
+  const dispatch = useDispatch();
+  const { health: monsterHealth } = useMonster();
+  const { health: playerHealth } = usePlayer();
+  return () => {
+    if (monsterHealth === 0) {
+      dispatch(setPhase(WIN));
+    } else if (playerHealth === 0) {
+      dispatch(setPhase(LOSE));
+    }
   };
 };
 
