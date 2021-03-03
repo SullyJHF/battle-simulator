@@ -17,8 +17,14 @@ export const Controls = () => {
   }, [phase]);
   return (
     <div id="controls">
-      <div id="info">{phase}</div>
-      <button type="button" disabled={phase !== IDLE} onClick={() => attack()}>Attack!</button>
+      <button
+        className="button"
+        type="button"
+        disabled={phase !== IDLE}
+        onClick={() => attack()}
+      >
+        Attack!
+      </button>
     </div>
   );
 };
