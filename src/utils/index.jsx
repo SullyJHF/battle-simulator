@@ -12,3 +12,9 @@ export const useSetInterval = (cb, time, enabled) => {
     }
   }, [time, enabled]);
 };
+
+export const usePrevious = (value) => {
+  const ref = useRef();
+  useEffect(() => { ref.current = value; });
+  return ref.current;
+};
