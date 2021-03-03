@@ -2,6 +2,7 @@ import React from 'react';
 import './actor.scss';
 import { Controls } from './Controls/Controls';
 import './game.scss';
+import { LOSE, useGame, WIN } from './gameSlice';
 import { Monster } from './Monster/Monster';
 import { Player } from './Player/Player';
 
@@ -13,5 +14,26 @@ export const Game = () => (
       <Controls />
       <Monster />
     </div>
+    <GameOver />
   </div>
 );
+
+const GameOver = () => {
+  const { phase } = useGame();
+  if (phase !== WIN && phase !== LOSE) return null;
+
+  const gameOverText = phase === WIN ? 'You Win!' : 'Game Over';
+
+  return (
+    <div id="game-over">
+      <h1 className={phase}>{gameOverText}</h1>
+      <button
+        className="button"
+        type="button"
+        onClick={() => console.log('reset')}
+      >
+        Play Again?
+      </button>
+    </div>
+  );
+};

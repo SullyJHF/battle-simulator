@@ -12,4 +12,28 @@
     width: 100%;
     height: 100%;
   }
+  #game-over {
+    @include flex(column, center, center);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.666);
+    h1 {
+      font-size: 15em;
+      font-weight: 900;
+      text-shadow: -5px -5px 0 #000, 5px -5px 0 #000, -5px 5px 0 #000, 5px 5px 0 #000;
+      &.win {
+        color: rgb(101, 209, 101);
+      }
+      &.lose {
+        color: rgb(204, 63, 63);
+      }
+      margin-bottom: 4vh;
+    }
+  }
+}
+
+.button {
+  padding: 1vh 2vh;
+  font-family: "Dot Gothic";
 }
