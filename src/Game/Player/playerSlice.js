@@ -13,7 +13,11 @@ export const actorSliceOptions = {
   initialState: initialActorState,
   reducers: {
     damage: (state, action) => {
-      state.health -= action.payload;
+      if (state.health - action.payload <= 0) {
+        state.health = 0;
+      } else {
+        state.health -= action.payload;
+      }
     },
     setDiceRoll: {
       reducer: (state, action) => {
