@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import { useDamageMonster, useMonster, useMonsterDiceTotal, useRollMonsterDice } from './Monster/monsterSlice';
-import { useDamagePlayer, usePlayer, usePlayerDiceTotal, useRollPlayerDice } from './Player/playerSlice';
+import { reset as resetMonster, useDamageMonster, useMonster, useMonsterDiceTotal, useRollMonsterDice } from './Monster/monsterSlice';
+import { reset as resetPlayer, useDamagePlayer, usePlayer, usePlayerDiceTotal, useRollPlayerDice } from './Player/playerSlice';
 
 const NAME = 'game';
 export const IDLE = 'idle';
@@ -66,6 +66,14 @@ export const useCheckWin = () => {
     } else if (playerHealth === 0) {
       dispatch(setPhase(LOSE));
     }
+  };
+};
+export const useReset = () => {
+  const dispatch = useDispatch();
+  return () => {
+    dispatch(resetPlayer());
+    dispatch(resetMonster());
+    dispatch(setPhase(IDLE));
   };
 };
 

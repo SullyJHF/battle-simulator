@@ -9,7 +9,7 @@ const monsterSlice = createSlice({
   ...actorSliceOptions,
 });
 
-const { damage, setDiceRoll } = monsterSlice.actions;
+export const { reset, damage, setDiceRoll } = monsterSlice.actions;
 
 export const useMonster = () => useSelector((state) => state[NAME]);
 export const useMonsterDiceTotal = () => useSelector((state) => state[NAME].diceA + state[NAME].diceB);

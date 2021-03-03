@@ -26,6 +26,11 @@ export const actorSliceOptions = {
       },
       prepare: (aResult, bResult) => ({ payload: { aResult, bResult } }),
     },
+    reset: (state) => {
+      state.health = initialActorState.health;
+      state.diceA = initialActorState.diceA;
+      state.diceB = initialActorState.diceB;
+    },
   },
 };
 
@@ -34,7 +39,7 @@ const playerSlice = createSlice({
   ...actorSliceOptions,
 });
 
-const { damage, setDiceRoll } = playerSlice.actions;
+export const { reset, damage, setDiceRoll } = playerSlice.actions;
 
 export const usePlayer = () => useSelector((state) => state[NAME]);
 export const usePlayerDiceTotal = () => useSelector((state) => state[NAME].diceA + state[NAME].diceB);

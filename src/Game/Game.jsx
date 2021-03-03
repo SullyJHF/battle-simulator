@@ -2,7 +2,7 @@ import React from 'react';
 import './actor.scss';
 import { Controls } from './Controls/Controls';
 import './game.scss';
-import { LOSE, useGame, WIN } from './gameSlice';
+import { LOSE, useGame, useReset, WIN } from './gameSlice';
 import { Monster } from './Monster/Monster';
 import { Player } from './Player/Player';
 
@@ -20,6 +20,7 @@ export const Game = () => (
 
 const GameOver = () => {
   const { phase } = useGame();
+  const reset = useReset();
   if (phase !== WIN && phase !== LOSE) return null;
 
   const gameOverText = phase === WIN ? 'You Win!' : 'Game Over';
@@ -30,7 +31,7 @@ const GameOver = () => {
       <button
         className="button"
         type="button"
-        onClick={() => console.log('reset')}
+        onClick={() => reset()}
       >
         Play Again?
       </button>
