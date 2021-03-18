@@ -1,4 +1,4 @@
-@mixin flex($dir: row, $align: flex-start, $justify: flex-start, $flex: 0 1) {
+@mixin flex($dir: row, $align: flex-start, $justify: flex-start, $flex: initial) {
   display: flex;
   flex: $flex;
   flex-direction: $dir;
